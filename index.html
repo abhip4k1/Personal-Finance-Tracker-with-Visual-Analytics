@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>💰 Personal Finance Tracker</h1>
+        <p class="subtitle">Manage your money intelligently</p>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section class="dashboard">
+        <div class="dashboard-card total-balance">
+          <h3>Total Balance</h3>
+          <p class="amount" id="totalBalance">₹0</p>
+        </div>
+        <div class="dashboard-card income">
+          <h3>Total Income</h3>
+          <p class="amount" id="totalIncome">₹0</p>
+        </div>
+        <div class="dashboard-card expenses">
+          <h3>Total Expenses</h3>
+          <p class="amount" id="totalExpenses">₹0</p>
+        </div>
+        <div class="dashboard-card savings">
+          <h3>Savings Rate</h3>
+          <p class="amount" id="savingsRate">0%</p>
+        </div>
+      </section>
+
+      <div class="main-content">
+        <!-- Left: Transaction Form & List -->
+        <div class="transaction-section">
+          <!-- Add Transaction Form -->
+          <div class="form-container">
+            <h2>Add Transaction</h2>
+            <form id="transactionForm">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input
+                  type="text"
+                  id="description"
+                  placeholder="e.g., Grocery Shopping"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input
+                    type="number"
+                    id="amount"
+                    placeholder="0.00"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <select id="type" required>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" required>
+                  <option value="">Select Category</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" required />
+              </div>
+
+              <button type="submit" class="btn-primary">Add Transaction</button>
+            </form>
+          </div>
+
+          <!-- Transaction List -->
+          <div class="transactions-container">
+            <h2>Recent Transactions</h2>
+            <div class="filter-controls">
+              <select id="filterType">
+                <option value="">All Types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+              <button id="clearData" class="btn-danger">Clear All Data</button>
+            </div>
+            <div id="transactionList" class="transaction-list">
+              <p class="empty-state">
+                No transactions yet. Add your first transaction!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Analytics -->
+        <div class="analytics-section">
+          <h2>Visual Analytics</h2>
+
+          <!-- Expense by Category Pie Chart -->
+          <div class="chart-container">
+            <h3>Expenses by Category</h3>
+            <canvas id="expensePieChart"></canvas>
+          </div>
+
+          <!-- Income vs Expense Bar Chart -->
+          <div class="chart-container">
+            <h3>Income vs Expenses (Monthly)</h3>
+            <canvas id="incomeExpenseChart"></canvas>
+          </div>
+
+          <!-- Monthly Trend Line Chart -->
+          <div class="chart-container">
+            <h3>Balance Trend</h3>
+            <canvas id="trendChart"></canvas>
+          </div>
+
+          <!-- Category Summary -->
+          <div class="chart-container">
+            <h3>Category Summary</h3>
+            <div id="categorySummary" class="category-summary">
+              <p class="empty-state">
+                Add transactions to see category breakdown
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
