@@ -1,4 +1,4 @@
-# 💰 Personal Finance Tracker (Simplified)
+# 💰 Personal Finance Tracker 
 
 A simple, fast web application for tracking personal finances with visual analytics. Built with HTML, CSS, and JavaScript - works directly in your browser with support for Indian Rupees (₹).
 
